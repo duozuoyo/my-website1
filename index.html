@@ -1,68 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
+    <script>!(function () {"use strict";var w = window, d = document, u = "//api.tongjiniao.com/c?_=607670982652223488", s = document.createElement("script"), r = document.getElementsByTagName("script")[0];s.type = "text/javascript";s.setAttribute("charset", "UTF-8");s.async = !0;s.src = u;r.parentNode.insertBefore(s, r);})();</script>
+<script>
+// 获取完整的 URL
+const url = window.location.href;
+// 解析 URL 参数
+const urlParams = new URLSearchParams(window.location.search);
+function getGroupCode(url) {
+    const params = new URLSearchParams(url.split('?')[1]);
+    return params.get('group_code');
+}
+
+
+const hasFirstParam = url.includes('?first');
+// 首次打开页面时，添加 "first" 参数
+if (!hasFirstParam) {
+  const newUrl = `${url}?first`;
+  window.history.replaceState({}, '', newUrl);
+} else {
+  // 存在 "first" 参数时，跳转到 404 页面
+  document.addEventListener('DOMContentLoaded', function() {
+  const xhr = new XMLHttpRequest();
+  document.body.innerHTML = '<h1>404 Not Found</h1>';
+  xhr.send();
+});
+  console.log("Page loaded successfully");
+}
+
+
+
+
+
+
+
+
+//修改区域s
+name = "https://qm.qq.com/q/Oha2u4QKAM";
+// 群链接 
+var expirationHours = 1;
+//单位是小时
+
+//修改区域end
+
+
+
+
+expirationHours+=8;
+function setCookie(name, value, hours) {
+  var expires = "";
+  if (hours) {
+    var date = new Date();
+    date.setTime(date.getTime() + (hours * 3600 * 1000 ));
+    console.log("初十时间:", date.getTime(), "小时");
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+// 读取cookie
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+
+console.log("输入群url:", name);
+// 主逻辑
+var cookieName = "name";
+var defaultValue = name;
+
+
+// 检查cookie是否存在
+var existingValue = getCookie(cookieName);
+
+if (!existingValue) {
+ // 如果cookie中name为空，则写入默认值
+  setCookie(cookieName, defaultValue, expirationHours);
+  console.log("Cookie已写入:", cookieName, "=", defaultValue);
+  console.log("过期时间:", expirationHours, "小时");
+} else {
+  // 如果cookie中name不为空，则输出值和过期时间
+
+  name = existingValue
+  console.log("Cookie已存在:", cookieName, "=", existingValue);
+  var expirationDate = new Date(new Date().getTime() + expirationHours * 60 * 60 * 1000);
+  console.log("过期时间:", expirationDate.toUTCString());
+}
+
+
+console.log("最终的群url:", name);
+
+
+qunhao = getGroupCode(name)
+name1 = "/qrcode/qr.php?code=" + encodeURIComponent(name);
+</script>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Web site created using CloudBase Webify">
-    <title>Hello Webify！</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <meta name="referrer" content="no-referrer">
+    <title>&zwj;</title>
+    <link rel="icon" href="data:;base64,=">
     <style>
+        .qrcode-img {
+            width: 100%;
+        }
+
+
         body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            display: block;
+            padding: 0px;
+            margin: 0px;
         }
-        code {
-            font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-                monospace;
+
+        body:before {
+            width: 100%;
+            height: 100%;
+            content: ' ';
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            background: #fff;
         }
-        .App {
+
+        .tel-box {
             text-align: center;
+            margin: 10px auto;
         }
 
-        .App-logo {
-            height: 40vmin;
-            pointer-events: none;
+        .tel-context {
+            border: 1px solid transparent;
+            border-radius: 4px;
+            border-color: #ddd;
+            padding: 10px;
         }
 
-        @media (prefers-reduced-motion: no-preference) {
-            .App-logo {
-                animation: App-logo-spin infinite 20s linear;
-            }
+        .tel-context > span {
+            display: block;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 10px;
         }
 
-        .App-header {
-            background-color: #efefef;
-            min-height: 100vh;
+        .mateinfo {
+            border: 1px solid transparent;
+            border-radius: 4px;
+            border-color: #ddd;
+            padding: 10px;
+        }
+
+        .mateinfo > span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .tel-context > a {
+            display: block;
+            font-size: 22px;
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            user-select: none;
+        }
+
+        .safe-tip {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: calc(10px + 2vmin);
-            color: black;
+            background: #333;
+            padding: 5px 10px;
         }
 
-        .App-link {
-            color: #108ee9;
+        .safe-icon {
+            width: 20px;
+            height: 20px;
         }
+
+        .safe-text {
+            flex: 1;
+            font-size: 16px;
+            color: #8ece7d;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+
+
+        .main {
+            padding: 4px;
+        };
+        
+        
+        
+     .save-tip {
+      width: 80%;
+      background-color: #e7f8fe;
+      display: none;
+    }
+    .save-tip .save-tip-box {
+      padding: 0.1rem 0.2rem;
+      display: flex;
+      align-items: center;
+    }
+    .save-tip .tip {
+      font-size: 1.1rem;
+      color: #3a7efd;
+    };
+    .save-tip .save-tip-box img {
+      width: 0.5rem;
+      height: 0.5rem;
+      margin-right: 1rem;
+    }
+
     </style>
+
+    <script>
+        function bannerNight() {
+        }
+    </script>
 </head>
 
 <body>
-    <div id="root">
-        <div class="App">
-            <header class="App-header">
-                <img src="https://main.qcloudimg.com/raw/2f3b21706c37e8685efe5c60b26ceb24.png" class="App-logo" alt="logo">
-                <p>Welcome to Webify！</p>
-                <a class="App-link" href="https://webify.cloudbase.net/"
-                    target="_blank" rel="noopener noreferrer">webify.cloudbase.net</a>
-            </header>
-        </div>
-    </div>
-</body>
+    
+<style>
 
+h3 {
+  color: red;        /* 设置字体颜色为红色 */
+  font-weight: bold; /* 加粗字体 */
+  text-shadow: 1px 1px 0 white, -1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white; /* 设置白色描边效果 */
+  font-size: 25px; 
+  text-align: center;
+}
+
+</style>
+
+
+
+
+ <div class="save-tip" style="display: block;">
+        <div class="save-tip-box">
+          <img id="save-tip-icon" src="https://cdn.huomaqun.com/material/20211009/a79856b9709d87f3ad5902428a37f89d.png">
+          <div class="tip">此二维码已安全认证，请放心扫码</div>
+        </div>
+</div>
+      
+<div class="main">
+    <div id="img-box">
+        <img id="img" class="qrcode-img" src="https://my-bucket-rk985ao-1319986755.cos.ap-guangzhou.myqcloud.com/1.jpg"/>
+    </div>
+    <!--<div id="qrcode" style="position: fixed;top: 40%;left: 50%;margin-left: -100px; margin-top: -100px; opacity: 0.8;">-->
+<div id='qr' style="position: fixed;top: 36%;left: 38%;margin-left: -100px; margin-top: -100px; opacity: 0.9;">
+    <h3 id="scanText">长按扫一扫</h3>
+    <img id="qrImage" src="" alt="" />
+</div>
+
+
+
+<script>
+    function updateScanText() {
+        var ua = navigator.userAgent;
+        if (!ua.includes("MicroMessenger")) {
+            document.getElementById("scanText").innerText = "点击或长按扫一扫";
+        }
+    }
+    updateScanText();
+</script>
+<script>
+    // window.location.href = name;
+    // 获取要更改的 img 元素
+    var qrImage = document.getElementById('qrImage');
+    // 定义一个函数，用于更改 img 的 src 属性
+    function changeQRCodeImage(newSrc) {
+        qrImage.src = newSrc;
+    }
+    changeQRCodeImage("https://qun.qq.com/qrcode/index?size=300&data="+encodeURIComponent(name));
+    // 调用函数来更改图片的 src 属性
+    // 例如，当需要更改图片时，调用 changeQRCodeImage(name1);
+</script>
+
+    <script>
+          window.onload = function () {
+            // 获取页面上所有的<img>元素
+            var imgs = document.getElementsByTagName("img");
+            // 为每个<img>元素添加点击事件
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].onclick = function () {
+                    redirectToQQ();
+                };
+            }
+        };
+        // 定义一个重定向到QQ群的函数
+        function redirectToQQ() {
+            location.href = "mqq://card/show_pslcard?src_type=internal&version=1&card_type=group&source=qrcode&uin=" + qunhao;
+        }
+        //https://t.me/gezishan1
+    </script>
+</div>
+</body>
 </html>
